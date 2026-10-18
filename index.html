@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CHECKMATE — Chess</title>
 <style>
-:root{--bg:#101014;--panel:#19191f;--red:#e63946;--cream:#f0d9b5;--green:#779556;--dark:#52683b;--text:#f7f7f8;--muted:#a8a8b3}
+:root{--bg:#101014;--panel:#19191f;--red:#e63946;--cream:#f0d9b5;--green:#779556;--text:#f7f7f8;--muted:#a8a8b3}
 *{box-sizing:border-box}
 body{margin:0;background:radial-gradient(circle at top,#26212a,var(--bg) 55%);color:var(--text);font-family:Arial,Helvetica,sans-serif;min-height:100vh}
 button,select{font:inherit}
@@ -42,29 +42,52 @@ button{cursor:pointer}
 .moves{height:180px;overflow:auto;background:#111116;border-radius:8px;padding:10px;font-family:monospace;font-size:13px;color:#ddd}
 .foot{color:var(--muted);font-size:12px;text-align:center;margin-top:18px}
 .turndot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--red);margin-right:7px}
+
+/* HOME SCREEN */
 .home-screen{max-width:1100px;margin:0 auto;padding:42px 24px 30px;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
-.home-hero{text-align:center;margin-bottom:38px}
-.home-mark{width:82px;height:82px;border-radius:24px;background:linear-gradient(145deg,#b5f477,#779956);color:#142014;display:grid;place-items:center;font-size:52px;margin:0 auto 20px;box-shadow:0 12px 40px #81b64c30}
+.home-hero{text-align:center;margin-bottom:30px}
+.home-mark{width:82px;height:82px;border-radius:0;background:linear-gradient(145deg,#b5f477,#779956);color:#142014;display:grid;place-items:center;font-size:52px;margin:0 auto 20px;box-shadow:0 8px 0 #354a2e}
 .home-hero h2{font-size:clamp(36px,7vw,64px);letter-spacing:5px;margin:0}
 .home-hero p{color:#a8b8a7;font-size:16px;line-height:1.7;margin:13px auto 0;max-width:560px}
 .home-choices{display:grid;grid-template-columns:repeat(2,minmax(0,280px));justify-content:center;gap:12px;max-width:600px;width:100%;margin:0 auto}
-.home-choice{width:100%;min-height:0;height:110px;text-align:center;border:2px solid #111;border-radius:0;padding:10px;background:linear-gradient(#777,#555 50%,#484848 51%,#626262);color:#fff;text-shadow:2px 2px #222;box-shadow:inset 2px 2px #bcbcbc,inset -2px -2px #292929,0 4px 0 #050505;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:filter .12s,transform .12s}
+.home-choice{width:100%;height:110px;min-height:0;text-align:center;border:2px solid #111;border-radius:0;padding:8px;background:linear-gradient(#777,#555 50%,#484848 51%,#626262);color:#fff;text-shadow:2px 2px #222;box-shadow:inset 2px 2px #bcbcbc,inset -2px -2px #292929,0 4px 0 #050505;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:filter .12s,transform .12s}
 .home-choice:hover{transform:scale(1.02);filter:brightness(1.2);border-color:#fff}
-.home-choice .home-icon{height:54px;width:54px;border-radius:0;border:2px solid #222;display:grid;place-items:center;background:#2d4230;color:#b5f477;font-size:29px;margin:0 auto 22px;box-shadow:inset 2px 2px #666,inset -2px -2px #171717}
-.home-choice h3{font-size:18px;margin:0 0 10px}
-.home-choice p{color:#a8b8a7;font-size:13px;line-height:1.6;margin:0}
-.home-choice small{display:block;color:#c6e7b0;font-size:10px;letter-spacing:1.3px;text-transform:uppercase;margin-top:17px}
+.home-choice .home-icon{height:28px;width:36px;flex-shrink:0;display:grid;place-items:center;background:#2d4230;color:#b5f477;font-size:23px;margin:0 auto 4px;box-shadow:inset 2px 2px #666,inset -2px -2px #171717}
+.home-choice h3{font-size:16px;margin:0 0 3px}
+.home-choice p{color:#eee;font-size:11px;line-height:1.25;margin:0}
+.home-choice small{display:block;color:#c6e7b0;font-size:9px;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
 .home-choice.gold .home-icon{background:#3a3220;color:#f0cf7a}
 .home-choice.gold small{color:#f0cf7a}
-.home-foot{text-align:center;color:#708070;font-size:12px;letter-spacing:1px;margin-top:30px}
-.online-panel{display:none;max-width:540px;margin:24px auto 0;padding:22px;border:1px solid #3b4d3c;background:#18231a;border-radius:16px}
+.home-foot{text-align:center;color:#708070;font-size:12px;letter-spacing:1px;margin-top:25px}
+.online-panel{display:none;max-width:540px;width:100%;margin:24px auto 0;padding:22px;border:1px solid #3b4d3c;background:#18231a;border-radius:0}
 .online-panel.show{display:block}
 .online-panel h3{margin:0 0 10px}
 .online-panel p{color:#a8b8a7;line-height:1.6;font-size:14px}
 .online-panel button{margin-top:6px}
 .back-home{margin-bottom:14px;background:#29372d;color:#e7eee4;border:1px solid #3b4e3e;border-radius:9px;padding:10px 13px;font-weight:700}
-@media(max-width:850px){.wrap{padding:12px}.layout{grid-template-columns:1fr}.side{padding:15px}.board{max-width:620px;margin:auto}.sq{font-size:clamp(25px,9vw,56px)}.home-screen{padding:30px 14px}.home-choices{grid-template-columns:repeat(2,minmax(0,1fr))}.home-choice{min-height:190px;padding:18px}}
-@media(max-width:450px){.home-choices{grid-template-columns:1fr}.home-choice{min-height:0}.home-choice .home-icon{margin-bottom:14px}}
+
+@media(max-width:850px){
+.wrap{padding:12px}
+.layout{grid-template-columns:1fr}
+.side{padding:15px}
+.board{max-width:620px;margin:auto}
+.sq{font-size:clamp(25px,9vw,56px)}
+.home-screen{padding:30px 14px}
+.home-choices{grid-template-columns:repeat(2,minmax(0,1fr))}
+.home-choice{height:110px;min-height:0;padding:6px}
+.home-hero{margin-bottom:24px}
+.home-hero p{font-size:14px}
+}
+@media(max-width:450px){
+.home-choices{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.home-choice{height:110px;min-height:0;padding:5px}
+.home-choice .home-icon{margin-bottom:4px}
+.home-choice h3{font-size:14px}
+.home-choice p{font-size:10px}
+.home-choice small{font-size:8px;letter-spacing:.5px}
+.home-hero h2{letter-spacing:2px}
+.home-mark{width:65px;height:65px;font-size:42px}
+}
 </style>
 </head>
 <body>
@@ -80,28 +103,28 @@ button{cursor:pointer}
     <button class="home-choice gold" onclick="openOnline('random')">
       <div class="home-icon">⚡</div>
       <h3>Play Random</h3>
-      <p>Find a new opponent online and test your skills.</p>
+      <p>Find a new opponent online.</p>
       <small>Online matchmaking</small>
     </button>
 
     <button class="home-choice" onclick="startLocal('ai')">
       <div class="home-icon">♟</div>
       <h3>Play with Bot</h3>
-      <p>Challenge the computer and choose your difficulty.</p>
+      <p>Challenge the computer.</p>
       <small>Works offline</small>
     </button>
 
     <button class="home-choice" onclick="startLocal('friend')">
       <div class="home-icon">♙</div>
       <h3>Play with Friend</h3>
-      <p>Take turns playing White and Black on the same device.</p>
+      <p>Play together on one device.</p>
       <small>Works offline</small>
     </button>
 
     <button class="home-choice gold" onclick="openOnline('invite')">
       <div class="home-icon">✉</div>
       <h3>Invite Friend</h3>
-      <p>Create an online room to play with a friend on another device.</p>
+      <p>Play online on different devices.</p>
       <small>Online multiplayer</small>
     </button>
   </div>
@@ -156,7 +179,7 @@ button{cursor:pointer}
 <script>
 const icons={K:'♔',Q:'♕',R:'♖',B:'♗',N:'♘',P:'♙',k:'♚',q:'♛',r:'♜',b:'♝',n:'♞',p:'♟'};
 const vals={p:100,n:320,b:330,r:500,q:900,k:20000};
-let board=[],turn='w',selected=null,legal=[],history=[],last=null,mode='ai',busy=false;
+let board=[],turn='w',selected=null,legal=[],history=[],last=null,mode='ai',busy=false,gameOver=false;
 
 function initial(){
   return ['rnbqkbnr','pppppppp','........','........','........','........','PPPPPPPP','RNBQKBNR'].map(r=>r.split('').map(c=>c==='.'?null:{t:c.toLowerCase(),c:c===c.toUpperCase()?'w':'b'}));
@@ -249,6 +272,7 @@ function render(){
   for(let r=0;r<8;r++)for(let c=0;c<8;c++){
     let sq=document.createElement('button');
     sq.className='sq '+((r+c)%2?'dark':'light');
+    sq.setAttribute('aria-label',`${'abcdefgh'[c]}${8-r}${board[r][c]?' '+board[r][c].t+' piece':''}`);
     if(selected&&selected[0]===r&&selected[1]===c)sq.classList.add('selected');
     if(last&&((last.from[0]===r&&last.from[1]===c)||(last.to[0]===r&&last.to[1]===c)))sq.classList.add('last');
     if(legal.some(m=>m[0]===r&&m[1]===c))sq.classList.add(board[r][c]?'capture':'hint');
@@ -261,7 +285,8 @@ function render(){
 }
 function updateStatus(){
   let ms=allMoves(board,turn),check=inCheck(board,turn),status=document.getElementById('status'),sub=document.getElementById('sub');
-  if(!ms.length){
+  gameOver=ms.length===0;
+  if(gameOver){
     status.textContent=check?'CHECKMATE!':'DRAW — STALEMATE';
     sub.textContent=check?(turn==='w'?'Black wins.':'White wins.'):'No legal moves remain.';
   }else{
@@ -272,7 +297,7 @@ function updateStatus(){
   document.getElementById('friend').classList.toggle('active',mode==='friend');
 }
 function clickSquare(r,c){
-  if(busy)return;
+  if(busy||gameOver)return;
   let p=board[r][c];
   if(selected&&legal.some(m=>m[0]===r&&m[1]===c)){doMove({from:selected,to:[r,c]});return}
   if(p&&p.c===turn&&!(mode==='ai'&&turn==='b')){selected=[r,c];legal=movesFor(board,r,c);render()}
@@ -282,16 +307,17 @@ function doMove(m){
   history.push({board:clone(board),turn,last,move:notation(m,board)});
   board=makeMove(board,m);last=m;turn=turn==='w'?'b':'w';selected=null;legal=[];
   refreshMoves();render();
-  if(mode==='ai'&&turn==='b'&&allMoves(board,turn).length){
+  if(mode==='ai'&&turn==='b'&&!gameOver){
     busy=true;
     setTimeout(()=>{
+      if(mode!=='ai'||turn!=='b'){busy=false;return}
       let ai=chooseAI();
       if(ai){
         history.push({board:clone(board),turn,last,move:notation(ai,board)});
         board=makeMove(board,ai);last=ai;turn='w';refreshMoves();
       }
       busy=false;render();
-    },300);
+    },250);
   }
 }
 function refreshMoves(){
@@ -352,7 +378,7 @@ function minimax(b,d,maximizing,alpha,beta){
   }
 }
 function reset(){
-  board=initial();turn='w';selected=null;legal=[];history=[];last=null;busy=false;
+  busy=false;gameOver=false;board=initial();turn='w';selected=null;legal=[];history=[];last=null;
   refreshMoves();render();
 }
 document.getElementById('computer').onclick=()=>{mode='ai';reset()};
@@ -360,6 +386,7 @@ document.getElementById('friend').onclick=()=>{mode='friend';reset()};
 document.getElementById('reset').onclick=reset;
 document.getElementById('undo').onclick=()=>{
   if(!history.length)return;
+  busy=false;
   let n=mode==='ai'&&history.length>=2?2:1;
   while(n--&&history.length){
     let h=history.pop();board=h.board;turn=h.turn;last=h.last;
@@ -376,11 +403,11 @@ function startLocal(which){
   window.scrollTo(0,0);
 }
 function returnHome(){
+  busy=false;
   document.getElementById('gameApp').style.display='none';
   document.getElementById('homeScreen').style.display='flex';
   closeOnline();window.scrollTo(0,0);
 }
-
 let onlineChoice='invite';
 function openOnline(which){
   onlineChoice=which;
@@ -403,7 +430,6 @@ function copyOnlineNote(){
     navigator.clipboard.writeText(note).then(()=>alert('Setup note copied!')).catch(()=>prompt('Copy this setup note:',note));
   }else prompt('Copy this setup note:',note);
 }
-
 reset();
 </script>
 </body>
