@@ -73,7 +73,37 @@ button,select{font:inherit}button{cursor:pointer}
 @media(max-width:780px){.wrap{padding:12px}.layout{grid-template-columns:minmax(0,1fr)}.side{padding:15px}.board{width:min(100%,620px);margin:auto}.sq{font-size:clamp(25px,9vw,56px)}.home-screen{padding:30px 14px}}
 @media(max-width:450px){.timer-setup{flex-direction:column;gap:7px;margin-bottom:20px}.timer-select{width:100%;max-width:280px}.clock-card{padding:10px}.clock-card span{font-size:10px}}
 @media(max-width:450px){.home-choices{gap:10px}.home-choice{min-height:150px;padding:12px}.home-icon{margin-bottom:10px}.home-choice h3{font-size:14px}.home-choice p{font-size:11px}.home-hero h2{letter-spacing:2px}.home-mark{width:65px;height:65px;font-size:42px}.coord{font-size:8px;left:2px;top:2px}.sq.capture:after{border-width:3px}}
+
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+  /* Clearly highlight legal chess moves */
+.sq.hint {
+  background: #b7f477 !important;
+  box-shadow: inset 0 0 0 3px #eaffd6;
+  position: relative;
+}
+
+.sq.hint:after {
+  content: '';
+  width: 26%;
+  height: 26%;
+  border-radius: 50%;
+  background: #142014;
+  position: absolute;
+}
+
+/* Different highlight for capture moves */
+.sq.capture {
+  background: #e6c86e !important;
+  box-shadow: inset 0 0 0 5px #f5e6a8;
+}
+
+.sq.capture:after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 5px solid #a12d35;
+  border-radius: 50%;
+}
 </style>
 <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
 </head>
